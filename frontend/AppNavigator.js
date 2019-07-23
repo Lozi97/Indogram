@@ -3,15 +3,19 @@ import Profile from "./components/profile/Profile";
 import ProfileThirdComponent from "./components/profile/ProfileThirdForm";
 import MainScreen from "./components/MainScreen";
 import secondComponent from "./components/profile/ProfileSecondComponent";
+import form from "./components/Form";
 const RootStack = createStackNavigator({
-  SecondComponent: {
-    screen: secondComponent
+  form: {
+    screen: form
+  },
+  MainScreen: {
+    screen: MainScreen
   },
   Profile: {
     screen: Profile
   },
-  MainScreen: {
-    screen: MainScreen
+  Second: {
+    screen: secondComponent
   },
   Third: {
     screen: ProfileThirdComponent

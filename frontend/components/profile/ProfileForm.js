@@ -98,7 +98,7 @@ export default class SlideApp extends Component {
             >
               <Button
                 primary
-                onPress={() => this.props.navigation.navigate("Third")}
+                onPress={() => this.props.navigation.navigate("Second")}
               >
                 <Text> submit </Text>
               </Button>

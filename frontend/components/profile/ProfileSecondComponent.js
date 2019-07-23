@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { StyleSheet, View, Text, TouchableOpacity } from "react-native";
 import { FlatGrid } from "react-native-super-grid";
+import { Button, Container, Form, Item } from "native-base";
 export default class Example extends Component {
   constructor(props) {
     super(props);
@@ -11,30 +12,57 @@ export default class Example extends Component {
     items[objIndex].pressed = !items[objIndex].pressed;
     this.setState(this.state);
   };
-
+  handleSubmit = () => {
+    var result = new Array();
+    for (var i in items) {
+      if (items[i].pressed === true) {
+        result.push(items[i]);
+      }
+    }
+    // console.log(result);
+    this.props.navigation.navigate("Third");
+  };
   render() {
     return (
-      <FlatGrid
-        itemDimension={130}
-        items={items}
-        style={styles.gridView}
-        // staticDimension={300}
-        // fixed
-        // spacing={20}
-        renderItem={({ item }) => (
-          <TouchableOpacity onPress={() => this.handleClick(item.id)}>
-            <View
-              style={[
-                styles.itemContainer,
-                { backgroundColor: item.pressed ? "green" : "gray" }
-              ]}
-            >
-              <Text style={styles.itemName}>{item.name}</Text>
-              <Text style={styles.itemCode}>{item.code}</Text>
-            </View>
-          </TouchableOpacity>
-        )}
-      />
+      <Container>
+        <FlatGrid
+          itemDimension={130}
+          items={items}
+          style={styles.gridView}
+          // staticDimension={300}
+          // fixed
+          // spacing={20}
+          renderItem={({ item }) => (
+            <TouchableOpacity onPress={() => this.handleClick(item.id)}>
+              <View
+                style={[
+                  styles.itemContainer,
+                  { backgroundColor: item.pressed ? "green" : "gray" }
+                ]}
+              >
+                <Text style={styles.itemName}>{item.name}</Text>
+                <Text style={styles.itemCode}>{item.code}</Text>
+              </View>
+            </TouchableOpacity>
+          )}
+        />
+        <Form style={{ paddingTop: "10%" }}>
+          <Item
+            style={{
+              alignItems: "center",
+              justifyContent: "center",
+              borderColor: "white"
+            }}
+          >
+            <Button style={styles.Button} onPress={this.handleSubmit}>
+              <Text style={{ textAlign: "center", alignItems: "center" }}>
+                {" "}
+                submit{" "}
+              </Text>
+            </Button>
+          </Item>
+        </Form>
+      </Container>
     );
   }
 }
@@ -68,5 +96,8 @@ const styles = StyleSheet.create({
     fontWeight: "600",
     fontSize: 12,
     color: "#fff"
+  },
+  Button: {
+    fontSize: 200
   }
 });
