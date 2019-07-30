@@ -1,13 +1,13 @@
 'use strict';
 module.exports = (sequelize, DataTypes) => {
-  const Enderement = sequelize.define('Enderement', {
+  const Endorsement = sequelize.define('Endorsement', {
 
     CompanyInstaUsername: {
-      type: DataTypes.INTEGER,
+      type: DataTypes.STRING,
       references: 'Company',
       referencesKey: 'username'
     },        
-    NameOfEndersement: {
+    NameOfEndorsement: {
       type: DataTypes.STRING,
       allowNull: {
         args: false,
@@ -21,7 +21,7 @@ module.exports = (sequelize, DataTypes) => {
         msg: 'Please enter the description'
       },
     },
-    TypeOfEndersement: {
+    TypeOfEndorsement: {
       type: DataTypes.STRING,
       allowNull: {
         args: false,
@@ -45,7 +45,7 @@ module.exports = (sequelize, DataTypes) => {
       },
 
     },
-    EndersementNeeded: {
+    EndorsementNeeded: {
       type: DataTypes.INTEGER,
       allowNull: {
         args: false,
@@ -62,8 +62,8 @@ module.exports = (sequelize, DataTypes) => {
 
 
   }, {});
-  Enderement.associate = function(models) {
+  Endorsement.associate = function(models) {
     // associations can be defined here
   };
-  return Enderement;
+  return Endorsement;
 };

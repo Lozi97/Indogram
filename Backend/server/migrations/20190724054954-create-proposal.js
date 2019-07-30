@@ -1,7 +1,7 @@
 'use strict';
 module.exports = {
   up: (queryInterface, Sequelize) => {
-    return queryInterface.createTable('Enderements', {
+    return queryInterface.createTable('Proposals', {
       id: {
         allowNull: false,
         autoIncrement: true,
@@ -10,37 +10,32 @@ module.exports = {
       },
       CompanyInstaUsername: {
         allowNull: false,
-        type: Sequelize.INTEGER
-      },
-      NameOfEndersement: {
-        allowNull: false,
         type: Sequelize.STRING
       },
-      Description: {
-        allowNull: false,
-        type: Sequelize.STRING
-      },
-      TypeOfEndersement: {
-        allowNull: false,
-        type: Sequelize.STRING
-      },
-      MinFollower: {
+      EndorsementID: {
         allowNull: false,
         type: Sequelize.INTEGER
       },
-      Budget: {
+      ProposalDescription: {
         allowNull: false,
-        type: Sequelize.INTEGER
-      },
-      EndersementNeeded: {
-        allowNull: false,
-        type: Sequelize.INTEGER
-      },
-      ImageURI: {
         type: Sequelize.STRING
       },
-      File.PDF: {
+      Status: {
+        allowNull: false,
         type: Sequelize.STRING
+      },
+      budget: {
+        type: Sequelize.INTEGER
+      },
+      TypeOfProposal: {
+        allowNull: false,
+        type: Sequelize.STRING
+      },
+      ReleaseDate: {
+        type: Sequelize.DATE
+      },
+      Duration: {
+        type: Sequelize.INTEGER
       },
       createdAt: {
         allowNull: false,
@@ -53,6 +48,6 @@ module.exports = {
     });
   },
   down: (queryInterface, Sequelize) => {
-    return queryInterface.dropTable('Enderements');
+    return queryInterface.dropTable('Proposals');
   }
 };

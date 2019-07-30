@@ -25,7 +25,7 @@ class Companies {
     }
 
 
-    static getCompaines(req, res) {
+    static getCompanies(req, res) {
         return Company
           .findAll()
           .then(companies => res.status(200).send(companies));

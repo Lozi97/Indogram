@@ -16,7 +16,7 @@ module.exports = (sequelize, DataTypes) => {
         msg: 'Please enter your name'
       }
     },
-    #OfFollwers: {
+    NumberOfFollwers: {
       type: DataTypes.INTEGER,
       allowNull: {
         args: false,
@@ -39,7 +39,7 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.STRING,
 
     },
-    email: {
+    Email: {
       type: DataTypes.STRING,
       allowNull: {
         args: false,

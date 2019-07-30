@@ -3,13 +3,13 @@ module.exports = (sequelize, DataTypes) => {
   const Proposal = sequelize.define('Proposal', {
 
     CompanyInstaUsername: {
-      type: DataTypes.INTEGER,
+      type: DataTypes.STRING,
       references: 'Company',
       referencesKey: 'username'
     },
-    EndersementID: {
+    EndorsementID: {
       type: DataTypes.INTEGER,
-      references: 'Endersement',
+      references: 'Endorsement',
       referencesKey: 'id'
     },    
     ProposalDescription: {
@@ -20,7 +20,7 @@ module.exports = (sequelize, DataTypes) => {
       },
     },
     Status: {
-      type: DataTypes.BOOLEAN,
+      type: DataTypes.STRING,
       allowNull: {
         args: false,
         msg: 'What is the status?'
@@ -41,10 +41,10 @@ module.exports = (sequelize, DataTypes) => {
     },
     ReleaseDate: {
       type: DataTypes.DATE,
-      allowNull: {
-        args: false,
-        msg: 'What is the release date?'
-      }
+      // allowNull: {
+      //   args: false,
+      //   msg: 'What is the release date?'
+      // }
 
     },
     Duration: {

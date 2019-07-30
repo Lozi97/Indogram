@@ -2,7 +2,7 @@
 module.exports = (sequelize, DataTypes) => {
   const Rating = sequelize.define('Rating', {
 
-    Rating: {
+    NRating: {
       type: DataTypes.INTEGER,
       allowNull: {
         args: false,
@@ -10,17 +10,10 @@ module.exports = (sequelize, DataTypes) => {
       }
     },
     UserInstaUsername: {
-      type: DataTypes.INTEGER,
+      type: DataTypes.STRING,
       references: 'User',
       referencesKey: 'id'
     },
-
-    CompanyInstaUsername: {
-      type: DataTypes.INTEGER,
-      references: 'Company',
-      referencesKey: 'InstaUsername'
-    },
-
 
     CompanyInstaUsername: {
       type: DataTypes.INTEGER,
