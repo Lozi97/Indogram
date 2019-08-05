@@ -7,7 +7,11 @@ module.exports = (sequelize, DataTypes) => {
       allowNull: {
         args: false,
         msg: 'Please enter the users Instagram'
-      }
+      },
+      unique: {
+        args: true,
+        msg: 'Username already exists'
+      },
     },
     FullName: {
       type: DataTypes.STRING,
@@ -16,12 +20,36 @@ module.exports = (sequelize, DataTypes) => {
         msg: 'Please enter your name'
       }
     },
-    NumberOfFollwers: {
+    ProfilePicture: {
+      type: DataTypes.STRING,
+
+    },
+    Bio: {
+      type: DataTypes.STRING,
+
+    },
+    Website: {
+      type: DataTypes.STRING,
+
+    },
+    IsBusiness: {
+      type: DataTypes.BOOLEAN,
+
+    },
+    NumberOfPosts: {
       type: DataTypes.INTEGER,
-      allowNull: {
-        args: false,
-        msg: 'Please enter the follower account'
-      },
+
+    },
+    NumberOfFollows: {
+      type: DataTypes.INTEGER,
+
+    },
+    NumberOfFollowers: {
+      type: DataTypes.INTEGER,
+      // allowNull: {
+      //   args: false,
+      //   msg: 'Please enter the follower account'
+      // },
     },
     AccountStartDate: {
       type: DataTypes.DATE,
@@ -29,10 +57,10 @@ module.exports = (sequelize, DataTypes) => {
     },
     Age: {
       type: DataTypes.INTEGER,
-      allowNull: {
-        args: false,
-        msg: 'Please enter your age'
-      },
+      // allowNull: {
+      //   args: false,
+      //   msg: 'Please enter your age'
+      // },
 
     },
     Location: {
@@ -41,10 +69,10 @@ module.exports = (sequelize, DataTypes) => {
     },
     Email: {
       type: DataTypes.STRING,
-      allowNull: {
-        args: false,
-        msg: 'Please enter your email address'
-      },
+      // allowNull: {
+      //   args: false,
+      //   msg: 'Please enter your email address'
+      // },
       unique: {
         args: true,
         msg: 'Email already exists'

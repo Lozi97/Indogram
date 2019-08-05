@@ -56,7 +56,9 @@ module.exports = (sequelize, DataTypes) => {
  
   }, {});
   Company.associate = function(models) {
-    // associations can be defined here
-  };
+    Company.hasMany(models.Endorsement, {
+      foreignKey: 'CompanyInstaUsername',
+      sourceKey: 'username'
+    });  };
   return Company;
 };

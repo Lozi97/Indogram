@@ -16,6 +16,8 @@ class Companies {
           phone,
           verify
           
+        } , {
+          include: [ Endorsement ]
         })
         .then(companyData => res.status(201).send({
           success: true,

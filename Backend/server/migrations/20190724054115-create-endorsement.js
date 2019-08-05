@@ -11,6 +11,13 @@ module.exports = {
       CompanyInstaUsername: {
         allowNull: false,
         type: Sequelize.STRING
+        ,
+        onDelete: 'CASCADE',
+
+       references: {
+          model: 'companies', // 'persons' refers to table name
+          key: 'id', // 'id' refers to column name in persons table
+       }
       },
       NameOfEndorsement: {
         allowNull: false,

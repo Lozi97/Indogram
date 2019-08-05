@@ -16,22 +16,47 @@ module.exports = {
         allowNull: false,
         type: Sequelize.STRING
       },
-      NumberOfFollwers: {
-        allowNull: false,
+      ProfilePicture: {
+       // allowNull: false,
+        type: Sequelize.STRING
+      },
+      Bio: {
+        //allowNull: false,
+        type: Sequelize.STRING
+      },
+      Website: {
+       // allowNull: false,
+        type: Sequelize.STRING
+      },
+      IsBusiness: {
+        //allowNull: false,
+        type: Sequelize.BOOLEAN
+      },
+      NumberOfPosts: {
+        //allowNull: false,
+        type: Sequelize.INTEGER
+      },
+      NumberOfFollows: {
+      //  allowNull: false,
+        type: Sequelize.INTEGER
+      },
+      
+      NumberOfFollowers: {
+       // allowNull: false,
         type: Sequelize.INTEGER
       },
       AccountStartDate: {
         type: Sequelize.DATE
       },
       Age: {
-        allowNull: false,
+        //allowNull: false,
         type: Sequelize.INTEGER
       },
       Location: {
         type: Sequelize.STRING
       },
       Email: {
-        allowNull: false,
+        //allowNull: false,
         type: Sequelize.STRING
       },
       PhoneNumber: {

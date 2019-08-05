@@ -1,5 +1,8 @@
 {
   "development": {
+    "instagram_api_key"      :     "61cb51ff63ec49bd9e29fd93b3720303",
+    "instagram_api_secret"   :     "1add5c5a1ae447ff84a43f3f7e992521",
+    "callback_url"          :     "http://localhost:3000/auth/instagram/callback",
     "username": "postgres",
     "password": "postgres",
     "database": "indogram",

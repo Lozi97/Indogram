@@ -3,13 +3,22 @@ const model = require('../models')
 const { User } = model;
 
 class Users {
+
+
+  
   static createUser(req, res) {
-    const {  InstaUsername,FullName,NumberOfFollwers,AccountStartDate,Age,Location,Email,PhoneNumber,Gender,TypeOfInfluencers,OverAllRating } = req.body
+    const {  InstaUsername,FullName,ProfilePicture,Bio,Website,IsBusiness,NumberOfPosts,NumberOfFollows,NumberOfFollowers,AccountStartDate,Age,Location,Email,PhoneNumber,Gender,TypeOfInfluencers,OverAllRating } = req.body
       return User
         .create({
             InstaUsername,
             FullName,
-            NumberOfFollwers,
+            ProfilePicture,
+            Bio,
+            Website,
+            IsBusiness,
+            NumberOfPosts,
+            NumberOfFollows,
+            NumberOfFollowers,
             AccountStartDate,
             Age,
             Location,
@@ -36,14 +45,20 @@ class Users {
 
 
     static updateUser(req, res) {
-        const { InstaUsername,FullName,NumberOfFollwers,AccountStartDate,Age,Location,Email,PhoneNumber,Gender,TypeOfInfluencers,OverAllRating } = req.body
+        const {  InstaUsername,FullName,ProfilePicture,Bio,Website,IsBusiness,NumberOfPosts,NumberOfFollows,NumberOfFollowers,AccountStartDate,Age,Location,Email,PhoneNumber,Gender,TypeOfInfluencers,OverAllRating  } = req.body
         return User
           .findByPk(req.params.userId)
           .then((user) => {
             user.update({
                 InstaUsername: InstaUsername || user.InstaUsername,
                 FullName: FullName || user.FullName,
-                NumberOfFollwers: NumberOfFollwers || user.NumberOfFollwers,
+                ProfilePicture: ProfilePicture || user.ProfilePicture,
+                Bio: Bio || user.Bio,
+                Website: Website || user.Website,
+                IsBusiness: IsBusiness || user.IsBusiness,
+                NumberOfPosts: NumberOfPosts || user.NumberOfPosts,
+                NumberOfFollows: NumberOfFollows || user.NumberOfFollows,
+                NumberOfFollowers: NumberOfFollowers || user.NumberOfFollowers,
                 AccountStartDate: AccountStartDate || user.AccountStartDate,
                 Age: Age || user.Age,
                 Location: Location || user.Location,
@@ -60,7 +75,13 @@ class Users {
                 data: {
                     InstaUsername: InstaUsername || updatedUser.InstaUsername,
                     FullName: FullName || updatedUser.FullName,
-                    NumberOfFollwers: NumberOfFollwers || updatedUser.NumberOfFollwers,
+                    ProfilePicture: ProfilePicture || updatedUser.ProfilePicture,
+                    Bio: Bio || updatedUser.Bio,
+                    Website: Website || updatedUser.Website,
+                    IsBusiness: IsBusiness || updatedUser.IsBusiness,
+                    NumberOfPosts: NumberOfPosts || updatedUser.NumberOfPosts,
+                    NumberOfFollows: NumberOfFollows || updatedUser.NumberOfFollows,
+                    NumberOfFollowers: NumberOfFollowers || updatedUser.NumberOfFollowers,
                     AccountStartDate: AccountStartDate || updatedUser.AccountStartDate,
                     Age: Age || updatedUser.Age,
                     Location: Location || updatedUser.Location,

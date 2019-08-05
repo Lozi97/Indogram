@@ -1,10 +1,12 @@
 const model = require('../models')
 
 const { Endorsement } = model;
+//const { Company } = model;
 
 class Endorsements {
   static createEndorsement(req, res) {
-    const { CompanyInstaUsername, NameOfEndorsement, Description, TypeOfEndorsement, MinFollower, Budget, EndorsementNeeded, ImageURI,FilePDF } = req.body
+   // var Creator = Endorsement.belongsTo(Company, {as: 'creator'});
+    const { CompanyInstaUsername, NameOfEndorsement, Description, TypeOfEndorsement, MinFollower, Budget, EndorsementNeeded, ImageURI,FilePDF,status } = req.body
       return Endorsement
         .create({
             CompanyInstaUsername,
@@ -15,9 +17,16 @@ class Endorsements {
              Budget, 
              EndorsementNeeded, 
              ImageURI,
-             FilePDF 
+             FilePDF,
+             status 
           
-        })
+        }
+        // , {include: [{
+        //   model: Company,
+        //   where: { username: CompanyInstaUsername } //
+        // }]
+        //}
+        )
         .then(endorsementData => res.status(201).send({
           success: true,
           message: 'Endorsement successfully created',
@@ -34,7 +43,7 @@ class Endorsements {
 
 
     static updateEndorsement(req, res) {
-        const {  CompanyInstaUsername, NameOfEndorsement, Description, TypeOfEndorsement, MinFollower, Budget, EndorsementNeeded, ImageURI,FilePDF  } = req.body
+        const {  CompanyInstaUsername, NameOfEndorsement, Description, TypeOfEndorsement, MinFollower, Budget, EndorsementNeeded, ImageURI,FilePDF,status  } = req.body
         return Endorsement
           .findByPk(req.params.endorsementId)
           .then((endorsement) => {
@@ -47,7 +56,8 @@ class Endorsements {
                 Budget: Budget || endorsement.Budget,
                 EndorsementNeeded: EndorsementNeeded || endorsement.EndorsementNeeded,
                 ImageURI: ImageURI || endorsement.ImageURI,
-                FilePDF: FilePDF || endorsement.FilePDF
+                FilePDF: FilePDF || endorsement.FilePDF,
+                status: status || endorsement.status
 
 
             })
@@ -63,7 +73,9 @@ class Endorsements {
                 Budget: Budget || updatedEndorsement.Budget,
                 EndorsementNeeded: EndorsementNeeded || updatedEndorsement.EndorsementNeeded,
                 ImageURI: ImageURI || updatedEndorsement.ImageURI,
-                FilePDF: FilePDF || updatedEndorsement.FilePDF
+                FilePDF: FilePDF || updatedEndorsement.FilePDF,
+                status: status || updatedEndorsement.status
+
                 }
               })
             })

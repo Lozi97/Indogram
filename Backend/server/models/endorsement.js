@@ -4,8 +4,10 @@ module.exports = (sequelize, DataTypes) => {
 
     CompanyInstaUsername: {
       type: DataTypes.STRING,
-      references: 'Company',
-      referencesKey: 'username'
+      allowNull: {
+        args: false,
+        msg: 'Please enter the name of the Endersement'
+      }
     },        
     NameOfEndorsement: {
       type: DataTypes.STRING,
@@ -59,11 +61,16 @@ module.exports = (sequelize, DataTypes) => {
     FilePDF: {
       type: DataTypes.STRING,
     },
+    status: {
+      type: DataTypes.STRING,
+    },
 
 
   }, {});
   Endorsement.associate = function(models) {
-    // associations can be defined here
-  };
+    Endorsement.belongsTo(models.Company, {
+      foreignKey: 'CompanyInstaUsername',
+      targetKey: 'username'
+    });  };
   return Endorsement;
 };
