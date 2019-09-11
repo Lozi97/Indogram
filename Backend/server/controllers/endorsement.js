@@ -102,6 +102,40 @@ class Endorsements {
               .catch(error => res.status(400).send(error));
           })
           .catch(error => res.status(400).send(error))
+      } 
+      
+      static getEndorsement(req, res) {
+        return Endorsement
+          .findByPk(req.params.endorsementId)
+          .then(endorsement => {
+            if(!endorsement) {
+              return res.status(400).send({
+              message: 'Endorsement Not Found',
+              });
+            }
+            return res.status(200).send({
+              message: 'Endorsement Found',
+              endorsement
+              }); 
+          })
+          .catch(error => res.status(400).send(error))
+      }  
+
+      static getEndorsementByUsername(req, res) {
+        return Endorsement
+          .findOne({where: {CompanyInstaUsername:req.params.username}})
+          .then(endorsement => {
+            if(!endorsement) {
+              return res.status(400).send({
+              message: 'Endorsement Not Found',
+              });
+            }
+            return res.status(200).send({
+              message: 'Endorsement Found',
+              endorsement
+              }); 
+          })
+          .catch(error => res.status(400).send(error))
       }  
 }
 

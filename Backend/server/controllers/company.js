@@ -89,6 +89,23 @@ class Companies {
           })
           .catch(error => res.status(400).send(error))
       }  
+
+      static getCompany(req, res) {
+        return Company
+          .findByPk(req.params.companyId)
+          .then(company => {
+            if(!company) {
+              return res.status(400).send({
+              message: 'company Not Found',
+              });
+            }
+            return res.status(200).send({
+              message: 'company Found',
+              company
+              }); 
+          })
+          .catch(error => res.status(400).send(error))
+      }  
 }
 
 module.exports = Companies;

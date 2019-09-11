@@ -87,6 +87,40 @@ class Proposals {
           })
           .catch(error => res.status(400).send(error))
       }  
+
+      static getProposal(req, res) {
+        return Proposal
+          .findByPk(req.params.proposalId)
+          .then(proposal => {
+            if(!proposal) {
+              return res.status(400).send({
+              message: 'Proposal Not Found',
+              });
+            }
+            return res.status(200).send({
+              message: 'Proposal Found',
+              proposal
+              }); 
+          })
+          .catch(error => res.status(400).send(error))
+      }  
+
+      static getProposalByUsername(req, res) {
+        return Proposal
+          .findOne({where: {CompanyInstaUsername:req.params.username}})
+          .then(proposal => {
+            if(!proposal) {
+              return res.status(400).send({
+              message: 'Proposal Not Found',
+              });
+            }
+            return res.status(200).send({
+              message: 'Proposal Found',
+              proposal
+              }); 
+          })
+          .catch(error => res.status(400).send(error))
+      } 
 }
 
 module.exports = Proposals;

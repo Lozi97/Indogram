@@ -10,15 +10,18 @@ module.exports = (app) => {
     message: 'Welcome to the BookStore API!',
   }));
 
+const data = []
 
   ////////////////   Company   //////////////////////
   app.post('/api/companies', Companies.createCompany); // API route for user to signup
+  app.get('/api/company/:companyId',Companies.getCompany)
   app.get('/api/companies', Companies.getCompanies); // API route for user to get all books in the database
   app.put('/api/companies/:companyId', Companies.updateCompany); // API route for user to edit a book
   app.delete('/api/companies/:companyId', Companies.deleteCompany); // API route for user to delete a book
 
    ////////////////   User   //////////////////////
    app.post('/api/users', Users.createUser); // API route for user to signup
+   app.get('/api/user/:userId',Users.getUser)
    app.get('/api/users', Users.getUsers); // API route for user to get all books in the database
    app.put('/api/users/:userId', Users.updateUser); // API route for user to edit a book
    app.delete('/api/users/:userId', Users.deleteUser); // API route for user to delete a book
@@ -26,6 +29,8 @@ module.exports = (app) => {
 
     ////////////////   Proposal   //////////////////////
     app.post('/api/proposals', Proposals.createProposal); // API route for user to signup
+    app.get('/api/proposal/:proposalId',Proposals.getProposal)
+    app.get('/api/proposalByUsername/:username',Proposals.getProposalByUsername)
     app.get('/api/proposals', Proposals.getProposals); // API route for user to get all books in the database
     app.put('/api/proposals/:proposalId', Proposals.updateProposal); // API route for user to edit a book
     app.delete('/api/proposals/:proposalId', Proposals.deleteProposal); // API route for user to delete a book
@@ -33,6 +38,8 @@ module.exports = (app) => {
 
      ////////////////   Endorsement   //////////////////////
      app.post('/api/endorsements', Endorsements.createEndorsement); // API route for user to signup
+     app.get('/api/endorsement/:endorsementId',Endorsements.getEndorsement)
+     app.get('/api/endorsementByUsername/:username',Endorsements.getEndorsementByUsername)
      app.get('/api/endorsements', Endorsements.getEndorsements); // API route for user to get all books in the database
      app.put('/api/endorsements/:endorsementId', Endorsements.updateEndorsement); // API route for user to edit a book
      app.delete('/api/endorsements/:endorsementId', Endorsements.deleteEndorsement); // API route for user to delete a book

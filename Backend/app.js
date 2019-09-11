@@ -33,10 +33,16 @@
         //app.use(bodyParser.urlencoded({ extended: false }));
 
 
-
-
-
+       
         
+  
+
+
+        //  getUsers(req, res) {
+        //   return User
+        //     .findAll()
+        //     .then(users => res.status(200).send(users));
+        // }
         //app.use(passport.initialize());
         //app.use(passport.session());
         passport.serializeUser((user, done) => {
@@ -49,13 +55,19 @@
         passport.use(new InstagramStrategy({
           clientID: "848f6a0cc2fb4d5bb81114891601d15a",
           clientSecret: "fe112d21501242938363ac2d2427722c",
-          callbackURL: "http://localhost:3000/auth/instagram/callback" 
+          callbackURL: "http://10.0.2.2:3000/auth/instagram/callback" 
         }, (accessToken, refreshToken, profile, done) => {
          User.findByPk(profile.id)
           .then(user => {
+         
+            //getUser(profile._json.data);
             console.log(profile._json.data["counts"]["followed_by"])
-
+            
             if(user) {
+              app.get('/api/user', function (req, res) {
+                res.send(profile._json.data)
+                
+              })
              return done(null, user); // Check if user already exists
 
             }            
@@ -118,8 +130,12 @@
             // OverAllRating
           
         })
+
+
         
       })
+
+   
          // });
         }))
 
@@ -143,6 +159,7 @@
       res.render('account', { user: req.user });
     });
     
+   
 
         // app.get('/auth/instagram', passport.authenticate('instagram'));
         // app.get(

@@ -117,6 +117,24 @@ class Users {
           })
           .catch(error => res.status(400).send(error))
       }  
+
+
+      static getUser(req, res) {
+        return User
+          .findByPk(req.params.userId)
+          .then(user => {
+            if(!user) {
+              return res.status(400).send({
+              message: 'User Not Found',
+              });
+            }
+            return res.status(200).send({
+              message: 'User Found',
+              user
+              }); 
+          })
+          .catch(error => res.status(400).send(error))
+      }  
 }
 
 module.exports = Users;
